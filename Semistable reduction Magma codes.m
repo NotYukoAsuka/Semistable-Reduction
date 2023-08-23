@@ -165,3 +165,18 @@ x := FF!X;
 RR<V> := PolynomialRing(FF,1);
 Factorization(V^2 + (4*L0.1/x)*V + (4*x^3 + (4*z - 64)*x^2 - 1024*x + 992*z - 7840)/(x^3*(x+z)));
 Factorization(V^2 + (4*L.1/x)*V + (4*x^3 - (4*z + 64)*x^2 - 1024*x - 992*z - 7840)/(x^3*(x+z)));
+
+// Computing the irreducible components of Gamma_{t_i} for generic a_1 and a_4.
+// Case a_4 is nonzero in k_L.
+F<a1,a4> := PolynomialRing(FiniteField(2^2),2);
+FF := FieldOfFractions(F);
+A<u,v,x,r,s> := AffineSpace(FF,5);
+C:=Scheme(A, [v*(1+a1*s)-(s+a4*s^3*v^2),x-r^2*(1-a1*v+a4*s^2*v^2),u-s*v,v*r]);
+IrreducibleComponents(C);
+
+// Case a_4 is zero in k_L.
+F<a1> := PolynomialRing(FiniteField(2^2),1);
+FF := FieldOfFractions(F);
+A<u,v,x,r,s> := AffineSpace(FF,5);
+C:=Scheme(A, [v*(1+a1*s)-s,x-r^2*(1-a1*v),u-s*v,v*r]);
+IrreducibleComponents(C);
