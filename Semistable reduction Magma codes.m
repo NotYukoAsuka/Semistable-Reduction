@@ -172,7 +172,10 @@ F<a1,a4> := PolynomialRing(FiniteField(2^2),2);
 FF := FieldOfFractions(F);
 A<u,v,x,r,s> := AffineSpace(FF,5);
 C:=Scheme(A, [v*(1+a1*s)-(s+a4*s^3*v^2),x-r^2*(1-a1*v+a4*s^2*v^2),u-s*v,v*r]);
-IrreducibleComponents(C);
+Irr := IrreducibleComponents(C);
+Irr;
+Genus(Curve(Irr[1]));
+Genus(Curve(Irr[2]));
 
 // Case a_4 is zero in k_L.
 F<a1> := PolynomialRing(FiniteField(2^2),1);
@@ -180,3 +183,5 @@ FF := FieldOfFractions(F);
 A<u,v,x,r,s> := AffineSpace(FF,5);
 C:=Scheme(A, [v*(1+a1*s)-s,x-r^2*(1-a1*v),u-s*v,v*r]);
 IrreducibleComponents(C);
+Genus(Curve(Irr[1]));
+Genus(Curve(Irr[2]));
